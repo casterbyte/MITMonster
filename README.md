@@ -8,6 +8,19 @@ A monster cheatsheet on MITM attacks
 
 All information contained in this repository is provided for educational and research purposes only. The author is not responsible for any harm caused by using this information.
 
+# Table of Contents
+* [Prologue](#Prologue)
+* [Croc in the Middle](#Croc-in-the-middle by s0i37 (L1))
+* [Link Layer Attacks](#Link Layer Attacks (L2))
+	* [ARP Cache Poisoning](#ARP Cache Poisoning)
+	* [LLMNR/NBT-NS/mDNS Poisoning](#LLMNR/NBT-NS/mDNS Poisoning)
+	* [STP Root Spoofing](#STP Root Spoofing)
+	* [DHCPv4 Spoofing](#DHCP Spoofing (Version 4))
+	* [DHCPv6 Spoofing](#DHCP Spoofing (Version 6))
+* [Network Layer Attacks](#Network Layer Attacks (L3))
+	* [Evil Twin against Dynamic Routing](#Evil Twin against Dynamic Routing (OSPF))
+	* [FHRP Spoofing](#First Hop Redundancy Spoofing)
+
 # Prologue
 
 Only practical MITM attacks that have a tangible impact are collected here. No theoretical attacks, only working techniques. In order to conduct MITM cautiously, I'll provide some helpful tips below.
