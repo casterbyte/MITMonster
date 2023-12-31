@@ -109,7 +109,7 @@ sudo python2 net-creds.py -i eth0
 
 ## Theory
 
-Security researcher Andrey Zhukov, under the alias [s0i37](t.me/s0i37), released an article about intercepting traffic with special "crocs" he uses to interfere with Ethernet wiring. This is how one-way MITM occurs.
+Security researcher Andrey Zhukov, under the alias [s0i37]([t.me/s0i37), released an article about intercepting traffic with special "crocs" he uses to interfere with Ethernet wiring. This is how one-way MITM occurs.
 
 ![Attacker cable](/images/croc-in-the-middle-attacker-cable.jpg)
 
