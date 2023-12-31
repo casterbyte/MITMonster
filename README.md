@@ -2,7 +2,7 @@
 
 A monster cheatsheet on MITM attacks
 
-![](images/mitmonster-cover.png)
+![](/images/mitmonster-cover.png)
 
 # Disclaimer
 
@@ -98,11 +98,11 @@ python2 net-creds.py -i eth0
 
 Security researcher Andrey Zhukov, under the alias s0i37, released an article about intercepting traffic with special "crocs" he uses to interfere with Ethernet wiring. This is how one-way MITM occurs.
 
-![Attacker cable](images\croc-in-the-middle-attacker-cable.jpg)
+![Attacker cable](/images/croc-in-the-middle-attacker-cable.jpg)
 
-![Connecting to twisted pair](images\croc-in-the-middle-connecting-to-twisted-pair.jpg)
+![Connecting to twisted pair](/images/croc-in-the-middle-connecting-to-twisted-pair.jpg)
 
-![Traffic sniffing](images\croc-in-the-middle-sniffing-traffic.jpg)
+![Traffic sniffing](/images/croc-in-the-middle-sniffing-traffic.jpg)
 
 ## Links
 
