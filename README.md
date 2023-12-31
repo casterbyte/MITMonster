@@ -365,7 +365,7 @@ Suppose you want to spoof an SMB service under the address `10.1.1.33/32`, you n
 
 **Setting up an OSPF network, the attacker declares his address to connect in OSPF and specifies a zone**
 
-```bash
+```
 monster# conf ter
 monster(config)# router ospf
 monster(config-router) network 192.168.31.2/32 area 0.0.0.0
