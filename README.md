@@ -376,7 +376,7 @@ Another factor is route cost. Using FRR, I am going to specify a zero-cost stati
 
 **Injection structure:**
 
-```bash
+```
 monster(config)# ip route 10.1.1.33/32 eth0
 ```
 
@@ -397,7 +397,7 @@ Exercise caution when you interfere in the routing process! The above-described 
 
 Due to the high convergence rate in OSPF, once your injected route is deadvertised, the routing table structure will quickly return to its initial (i.e. before the attack) state. The convergence rate is four seconds. However, everything depends on the network size since all routers must update their tables. Again, exercise caution!
 
-```bash
+```
 monster(config)# no ip route 192.168.100.1/32 eth0
 ```
 
