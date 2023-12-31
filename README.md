@@ -10,16 +10,16 @@ All information contained in this repository is provided for educational and res
 
 # Table of Contents
 * [Prologue](#Prologue)
-* [Croc in the Middle](# Croc-in-the-middle by s0i37 (L1))
+* [Croc in the Middle](#Croc-in-the-middle by s0i37 (L1))
 * [Link Layer Attacks](#Link Layer Attacks (L2))
-	* [ARP Cache Poisoning](#ARP Cache Poisoning)
-	* [LLMNR/NBT-NS/mDNS Poisoning](#LLMNR/NBT-NS/mDNS Poisoning)
-	* [STP Root Spoofing](#STP Root Spoofing)
-	* [DHCPv4 Spoofing](#DHCP Spoofing (Version 4))
-	* [DHCPv6 Spoofing](#DHCP Spoofing (Version 6))
+	* [ARP Cache Poisoning](##ARP Cache Poisoning)
+	* [LLMNR/NBT-NS/mDNS Poisoning](##LLMNR/NBT-NS/mDNS Poisoning)
+	* [STP Root Spoofing](##STP Root Spoofing)
+	* [DHCPv4 Spoofing](##DHCP Spoofing (Version 4))
+	* [DHCPv6 Spoofing](##DHCP Spoofing (Version 6))
 * [Network Layer Attacks](#Network Layer Attacks (L3))
-	* [Evil Twin against Dynamic Routing](#Evil Twin against Dynamic Routing (OSPF))
-	* [FHRP Spoofing](#First Hop Redundancy Spoofing)
+	* [Evil Twin against Dynamic Routing](##Evil Twin against Dynamic Routing (OSPF))
+	* [FHRP Spoofing](##First Hop Redundancy Spoofing)
 
 # Prologue
 
