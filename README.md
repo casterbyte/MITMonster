@@ -92,7 +92,7 @@ python3 PCredz -i eth0
 python2 net-creds.py -i eth0
 ```
 
-# L1 Layer (Croc-in-the-middle by s0i37)
+# Croc-in-the-middle by s0i37 (L1)
 
 ## Theory
 
