@@ -30,7 +30,7 @@ Only practical MITM attacks that have a tangible impact are collected here. No t
 A +1 incremental TTL offset allows the attacker's IP address to be hidden from the victim's packet trace, reducing the risk of compromising the attacker's actions. This is done with a single rule in the mangle table.
 
 ```bash
-iptables -t mangle -A PREROUTING -i ethX -j TTL --ttl-inc 1
+sudo iptables -t mangle -A PREROUTING -i ethX -j TTL --ttl-inc 1
 ```
 
 ## Traffic forward
