@@ -346,6 +346,10 @@ Monster(config)# vlan filter BLOCKMITM6 vlan-list <VLAN ID>
 
 The switch will now filter DHCPv6 messages and will not allow mitm6 traffic in a `UDP/547` context. This will prevent an attacker from imposing itself as a DNS server at the IPv6 layer.
 
+### Links
+
+Article Link: https://blog.fox-it.com/2018/01/11/mitm6-compromising-ipv4-networks-via-ipv6/
+
 # Network Layer Attacks (L3)
 
 ## Evil Twin against Dynamic Routing (OSPF)
