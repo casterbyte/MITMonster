@@ -10,7 +10,7 @@ All information contained in this repository is provided for educational and res
 
 # Table of Contents
 * [Prologue](#Prologue)
-* [Croc in the Middle](#Croc-in-the-middle by s0i37 (L1))
+* [Croc in the Middle](# Croc-in-the-middle by s0i37 (L1))
 * [Link Layer Attacks](#Link Layer Attacks (L2))
 	* [ARP Cache Poisoning](#ARP Cache Poisoning)
 	* [LLMNR/NBT-NS/mDNS Poisoning](#LLMNR/NBT-NS/mDNS Poisoning)
