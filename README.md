@@ -65,7 +65,7 @@ sudo iptables -t raw -L
 
 ## Promisc mode
 
-When analyzing traffic for sensitive data, it is recommended to enable the non-disruptive interface mode
+When analyzing traffic for sensitive data, it is recommended to enable promisc mode on the interface
 
 ```bash
 sudo ip link set eth0 promisc on
