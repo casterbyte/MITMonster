@@ -58,7 +58,7 @@ However, you're likely to run up against the capabilities of the switch port you
 One of the main rules of MITM is NAT configuration. Usually attackers make do with a single command:
 
 ```bash
-sudo iptables -t nat -A POSTROUTING -o eth0 -j MASQUERADE
+sudo iptables -t nat -A POSTROUTING -o ethX -j MASQUERADE
 ```
 
 Without NAT configured, an attacker will not be able to see the second part of the traffic, which could potentially contain credentials. This is because of asymmetric routing - where traffic goes one way but comes back another. With masquerading, asymmetric routing does not prevent an attacker from seeing traffic going both ways.
@@ -81,7 +81,7 @@ sudo iptables -t raw -L
 When analyzing traffic for sensitive data, it is recommended to enable promisc mode on the interface
 
 ```bash
-sudo ip link set eth0 promisc on
+sudo ip link set ethX promisc on
 ```
 
 ## NAT helper
@@ -101,8 +101,8 @@ When doing ARP spoofing, do not spoof too large subnet masks, otherwise the load
 A classic of the genre is to use [Pcredz](https://github.com/lgandx/PCredz) or [net-creds](https://github.com/DanMcInerney/net-creds) to identify credentials and other sensitive information in traffic
 
 ```bash
-sudo python3 ./Pcredz -i eth0 -v
-sudo python2 net-creds.py -i eth0
+sudo python3 ./Pcredz -i ethX -v
+sudo python2 net-creds.py -i ethX
 ```
 
 # Croc-in-the-middle by s0i37 (L1)
@@ -381,20 +381,20 @@ Another factor is route cost. Using FRR, I am going to specify a zero-cost stati
 **Injection structure:**
 
 ```
-monster(config)# ip route 10.1.1.33/32 eth0
+monster(config)# ip route 10.1.1.33/32 ethX
 ```
 
 Now I have to create a secondary address on the network interface equal to the address of the target SMB share since the traffic will come to my host via destination ip `10.1.1.1.33/32`
 
 ```bash
-sudo ifconfig eth0:1 10.1.1.33 netmask 255.255.255.255
+sudo ifconfig ethX:1 10.1.1.33 netmask 255.255.255.255
 ```
 
 Now all traffic intended for this SMB share will go to my host. After that, I can deploy a simple SMB server using [impacket](https://github.com/fortra/impacket) and intercept encrypted user credentials (i.e. NetNTLM hashes) that can be subsequently brute-forced or relayed (NTLM Relay)
 
 ```bash
 sudo impacket-smbserver -smb2support sharePath /home/caster/smb-share
-~/toolkit/net-creds$ sudo python2 net-creds.py -i eth0
+~/toolkit/net-creds$ sudo python2 net-creds.py -i ethX
 ```
 
 Exercise caution when you interfere in the routing process! The above-described attack is extremely aggressive: when users go to some SMB share for their files, they won’t find nothing there. Since you’re spoofing this share, you might be able to deploy a copy of it. You will collect enough hashes pretty soon, and then you can stop the attack. It’s not recommended to procrastinate the exploitation; otherwise, legitimate employees would become upset, while your covert pentesting study won’t be a secret anymore.
@@ -402,7 +402,7 @@ Exercise caution when you interfere in the routing process! The above-described 
 Due to the high convergence rate in OSPF, once your injected route is deadvertised, the routing table structure will quickly return to its initial (i.e. before the attack) state. The convergence rate is four seconds. However, everything depends on the network size since all routers must update their tables. Again, exercise caution!
 
 ```
-monster(config)# no ip route 192.168.100.1/32 eth0
+monster(config)# no ip route 192.168.100.1/32 ethX
 ```
 
 ### Attack Impact
