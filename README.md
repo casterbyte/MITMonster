@@ -101,7 +101,7 @@ When doing ARP spoofing, do not spoof too large subnet masks, otherwise the load
 A classic of the genre is to use [Pcredz](https://github.com/lgandx/PCredz) or [net-creds](https://github.com/DanMcInerney/net-creds) to identify credentials and other sensitive information in traffic
 
 ```bash
-sudo python3 PCredz -i eth0
+sudo python3 ./Pcredz -i eth0 -v
 sudo python2 net-creds.py -i eth0
 ```
 
