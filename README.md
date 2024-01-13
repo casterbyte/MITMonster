@@ -6,7 +6,7 @@ A monster cheatsheet on MITM attacks
 
 # Disclaimer
 
-All information contained in this repository is provided for educational and research purposes only. The author is not responsible for any harm caused by using this information.
+All information contained in this repository is provided for educational and research purposes only. The author is not responsible for any harm caused by using this informatio.
 
 # Table of Contents
 * [Prologue](#Prologue)
