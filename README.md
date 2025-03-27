@@ -1,6 +1,6 @@
 # MITMonster
 
-A monster cheatsheet on MITM attacks
+A monster cheatsheet on MITM attacks (New version in WIP)
 
 ![](/images/mitmonster-cover.png)
 
@@ -474,7 +474,3 @@ Example of setting the maximum priority for HSRP:
 Monster(config)# int g0/0
 Monster(config-if)# standby 1 priority 255
 ```
-
-### Links
-
-Caster - [FHRP Nightmare](https://medium.com/@casterbyte/fhrp-nightmare-pentesting-redundancy-systems-like-a-devil-aeeb7d40e766)
