@@ -39,6 +39,7 @@ One of the main rules of MITM is to allow routing on your host, otherwise there 
 
 ```bash
 sudo sysctl -w net.ipv4.ip_forward=1
+sudo echo 0 | tee /proc/sys/net/ipv4/conf/*/send_redirects
 ```
 
 ## Hardware
@@ -76,14 +77,6 @@ sudo iptables -t mangle -L
 sudo iptables -t raw -L
 ```
 
-## Promisc mode
-
-When analyzing traffic for sensitive data, it is recommended to enable promisc mode on the interface
-
-```bash
-sudo ip link set ethX promisc on
-```
-
 ## NAT helper
 
 FTP, H.323 and SIP traffic can pass through you. These are No NAT Friendly protocols and you need the `nf_conntrack` module to make them work with NAT. With MITM, the attacker must enable NAT to see traffic going both ways.
@@ -98,9 +91,10 @@ When doing ARP spoofing, do not spoof too large subnet masks, otherwise the load
 
 ## Credentials sniffing
 
-A classic of the genre is to use [Pcredz](https://github.com/lgandx/PCredz) or [net-creds](https://github.com/DanMcInerney/net-creds) to identify credentials and other sensitive information in traffic
+A classic of the genre is to use [Dsniff](https://github.com/hackerschoice/dsniff) or [Pcredz](https://github.com/lgandx/PCredz) or [net-creds](https://github.com/DanMcInerney/net-creds) to identify credentials and other sensitive information in traffic
 
 ```bash
+sudo dsniff -i ethX -v
 sudo python3 ./Pcredz -i ethX -v
 sudo python2 net-creds.py -i ethX
 ```
@@ -135,13 +129,19 @@ MITM
 
 ### Tools
 
-[Ettercap](https://github.com/Ettercap/ettercap)
+Use one of these tools to redirect traffic.
+
+#### [ARP-MITM](https://github.com/hackerschoice/thc-arpmitm)
+
+```
+sudo arpmitm -t <Router-IP>
+```
+
+#### [Ettercap](https://github.com/Ettercap/ettercap)
 
 ```
 sudo ettercap -G
 ```
-
-> CAUTION: After ARP Spoofing, your tool must generate reverse IS-AT frames restoring the ARP host tables. Otherwise, DoS is possible, hosts may hang and not make a new ARP request. By the way - Ettercap successfully restores tables after ARP Spoofing is over
 
 ### Mitigations
 
